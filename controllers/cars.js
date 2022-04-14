@@ -31,3 +31,15 @@ exports.cars_delete = function(req, res) {
 exports.cars_update_put = function(req, res) { 
     res.send('NOT IMPLEMENTED: Car update PUT' + req.params.id); 
 }; 
+// VIEWS 
+// Handle a show all view 
+exports.cars_view_all_Page = async function(req, res) { 
+    try{ 
+        thecars = await cars.find(); 
+        res.render('cars', { title: 'Car Search Results', results: thecars }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+};
