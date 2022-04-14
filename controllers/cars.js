@@ -25,7 +25,7 @@ exports.cars_create_post = async function(req, res) {
     // We are looking for a body, since POST does not have query parameters. 
     // Even though bodies can be in many different formats, we will be picky 
     // and require that it be a json object 
-    // {"costume_type":"goat", "cost":12, "size":"large"} 
+    // {"car_company":"audi", "color":pink, "size":400000} 
     document.car_company = req.body.car_company; 
     document.color = req.body.color; 
     document.price = req.body.price; 
