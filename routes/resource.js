@@ -29,3 +29,7 @@ router.get('/resource/cars/:id', cars_controller.cars_detail);
 router.get('/resource/cars', cars_controller.cars_list); 
  
 module.exports = router;
+/* GET detail cars page */ 
+router.get('/detail', cars_controller.cars_view_one_Page); 
+/* GET create cars page */ 
+router.get('/create', cars_controller.cars_create_Page); 

@@ -12,7 +12,7 @@ exports.cars_list = async function(req, res) {
     }   
 };
  
-// for a specific Costume. 
+// for a specific cars. 
 exports.cars_detail = async function(req, res) { 
     console.log("detail"  + req.params.id) 
     try { 
@@ -51,8 +51,9 @@ exports.cars_create_post = async function(req, res) {
 exports.cars_delete = function(req, res) { 
     res.send('NOT IMPLEMENTED: Car delete DELETE ' + req.params.id); 
 }; 
+
  
-// Handle Costume update form on PUT. 
+// Handle cars update form on PUT. 
 exports.cars_update_put = async function(req, res) { 
     console.log(`update on id ${req.params.id} with body 
 ${JSON.stringify(req.body)}`) 
@@ -84,3 +85,41 @@ exports.cars_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 };
+//Handle cars delete on DELETE. 
+exports.cars_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await cars.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+}; 
+// Handle a show one view with id specified by query 
+exports.cars_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await cars.findById( req.query.id) 
+        res.render('carsdetail',  
+{ title: 'cars Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+ // Handle building the view for creating a cars. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.cars_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('carscreate', { title: 'cars Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
