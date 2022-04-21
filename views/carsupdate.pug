@@ -1,0 +1,45 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ if (toShow == null) 
+    h2 No instance to delete 
+  else
+  - let carsid = toShow._id 
+  - let car_company = toShow.car_company
+  - let color = toShow.color
+  - let price = toShow.price 
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{carsid} 
+  - let actionid = "/resource/resource/cars/" + carsid 
+  form(id='carsForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.carsAttr(for='car_company') car company
+        input#car_company(type='text', name='car_company') 
+    div.form-group 
+        label.carsAttr(for='color') color
+        input#color(type='text', name='size' ) 
+    div.form-group 
+        label.carsAttr(for='price') price
+        input#price(type='number', name='price' ) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['carsForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) 
+      }).then((resp) => { 
+        return resp.json();
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 

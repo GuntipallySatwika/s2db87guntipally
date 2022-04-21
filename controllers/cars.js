@@ -61,9 +61,11 @@ ${JSON.stringify(req.body)}`)
         let toUpdate = await cars.findById( req.params.id) 
         // Do updates of properties 
         if(req.body.car_company)  
-               toUpdate.car_company = req.body.cars_type; 
-        if(req.body.cost) toUpdate.color = req.body.color; 
-        if(req.body.size) toUpdate.price = req.body.price; 
+            toUpdate.car_company = req.body.car_company; 
+        if(req.body.color) 
+            toUpdate.color = req.body.color; 
+        if(req.body.price)
+            toUpdate.price = req.body.price; 
         let result = await toUpdate.save(); 
         console.log("Sucess " + result) 
         res.send(result) 
@@ -123,3 +125,30 @@ exports.cars_create_Page =  function(req, res) {
         res.send(`{'error': '${err}'}`); 
     } 
 }; 
+// Handle building the view for updating a cars. 
+// query provides the id 
+exports.cars_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await cars.findById(req.query.id) 
+        res.render('carsupdate', { title: 'cars Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+// Handle a delete one view with id from query 
+exports.cars_delete_Page = async function(req, res) { 
+    console.log("Delete view for id "  + req.query.id) 
+    try{ 
+        result = await cars.findById(req.query.id) 
+        res.render('carsdelete', { title: 'cars Delete', toShow: 
+result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+ 

@@ -33,3 +33,7 @@ module.exports = router;
 router.get('/detail', cars_controller.cars_view_one_Page); 
 /* GET create cars page */ 
 router.get('/create', cars_controller.cars_create_Page); 
+/* GET create update page */ 
+router.get('/update', cars_controller.cars_update_Page); 
+/* GET delete cars page */ 
+router.get('/delete', cars_controller.cars_delete_Page); 

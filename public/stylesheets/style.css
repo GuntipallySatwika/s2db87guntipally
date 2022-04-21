@@ -9,4 +9,6 @@ a {
 .carsAttr { 
   background-color: aquamarine; 
   width: 120px; 
+  color:blue;
+  font-family: 'Times New Roman', Times, serif;
 } 
