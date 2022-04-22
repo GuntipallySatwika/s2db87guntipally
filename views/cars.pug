@@ -1,17 +1,16 @@
-
+extends layout
 
 block content
   h1= title
   -let results=[{car_company:"Rolls Royce",color:"Salamanca Blue",price:450000},{car_company:"lamborgini",color:"white",price:500000},{car_company:"bugatti",color:"yellow",price:300000}]
-  div(class="container-fluid")
-  div(class="row")
-  -
-  each j,index in results 
-            div(class="col-sm-2" onclick=`buy(${index})`)  #{j.car_company}  
-            div(class="col-sm-2" onclick=`buy(${index})`)  #{j.color}
-            div(class="col-sm-2" onclick=`buy(${index})`)  #{j.price}
-script.
-    function buy(l)
-    {
-        alert(`You have purchased item ${l+1}`);
-    }
+  div(class="container-fluid") 
+    div(class="row m-1") 
+      each item in results  
+        - let destination = `dispatch(\"/cars/update?id=${item._id}\")` 
+        div(class="row-sm-2", class="m-1") Item #{item.car_company}(#{item.color}) is #{item.price} 
+          button.btn( class="btn-primary ml-1", onclick= destination) Update 
+   
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
+    } 
