@@ -13,7 +13,7 @@ block content
   div.row(class='mb-2') 
     div.mr-1 ID is 
     div #{carsid} 
-  - let actionid = "/resource/resource/cars/" + carsid 
+  - let actionid = "/resource/cars/" + carsid 
   form(id='carsForm', action= actionid, method="PUT") 
     div.form-group 
         label.carsAttr(for='car_company') car company

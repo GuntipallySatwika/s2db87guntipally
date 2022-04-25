@@ -5,5 +5,4 @@ const carsSchema = mongoose.Schema({
  price: Number 
 }) 
  
-module.exports = mongoose.model("cars", 
-carsSchema)
+module.exports = mongoose.model("cars", carsSchema)

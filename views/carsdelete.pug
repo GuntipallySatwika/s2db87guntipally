@@ -10,7 +10,7 @@ block content
     - let car_company = toShow.car_company 
     - let color = toShow.color
     - let price = toShow.price
-    - let actionid = "/resource/resource/cars/" + carsid 
+    - let actionid = "/resource/cars/" + carsid 
     script let actionid = "#{actionid}" 
     div 
       div.row 
@@ -32,7 +32,7 @@ block content
   script. 
     function cancel() { 
       // Go back to the home page for the cars collection 
-      window.location.href='/resource/resource/cars' 
+      window.location.href='/resource/cars' 
     } 
   script. 
     function deleteOnid() { 
@@ -44,7 +44,7 @@ block content
         return resp.json();  
       }).then((body) => { 
         alert("Delete succeded") 
-        window.location.href='/resource/resource/cars' 
+        window.location.href='/resource/cars' 
         // TODO handle body 
       }).catch((error) => { 
         // TODO handle error 
