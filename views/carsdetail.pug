@@ -2,23 +2,23 @@ extends layout
  
 block content 
   h1= title 
- if (toShow == null) 
-    h2 No instance to delete 
+  if(toShow == null) 
+    h2 No instance to delete
   else
-  - let carsid = toShow._id 
-  - let car_company  = toShow.car_company 
-  - let color = toShow.color 
-  - let price = toShow.price
-  div 
-    div.row 
-      div(class='carsAttr mr-3') cars ID is: 
-      div #{carsid} 
-    div.row 
-      div(class='carsAttr mr-3') car company is: 
-      div #{car_company} 
-    div.row 
-      div(class='carsAttr mr-3') color is: 
-      div #{color} 
-    div.row 
-      div(class='carsAttr mr-3') price is: 
-      div #{price} 
+    - let carsid = toShow._id 
+    - let car_company  = toShow.car_company 
+    - let color = toShow.color 
+    - let price = toShow.price
+    div 
+      div.row 
+        div(class='carsAttr mr-3') cars ID is: 
+        div #{carsid} 
+      div.row 
+        div(class='carsAttr mr-3') car company is: 
+        div #{car_company} 
+      div.row 
+        div(class='carsAttr mr-3') color is: 
+        div #{color} 
+      div.row 
+        div(class='carsAttr mr-3') price is: 
+        div #{price} 
