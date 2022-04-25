@@ -2,29 +2,29 @@ extends layout
  
 block content 
   h1= title 
- if (toShow == null) 
+  if (toShow == null) 
     h2 No instance to delete 
   else
-  - let carsid = toShow._id 
-  - let car_company = toShow.car_company
-  - let color = toShow.color
-  - let price = toShow.price 
+    - let carsid = toShow._id 
+    - let car_company = toShow.car_company
+    - let color = toShow.color
+    - let price = toShow.price 
    
-  div.row(class='mb-2') 
-    div.mr-1 ID is 
-    div #{carsid} 
-  - let actionid = "/resource/cars/" + carsid 
-  form(id='carsForm', action= actionid, method="PUT") 
-    div.form-group 
-        label.carsAttr(for='car_company') car company
-        input#car_company(type='text', name='car_company') 
-    div.form-group 
-        label.carsAttr(for='color') color
-        input#color(type='text', name='size' ) 
-    div.form-group 
-        label.carsAttr(for='price') price
-        input#price(type='number', name='price' ) 
-    input(type="submit") 
+    div.row(class='mb-2') 
+      div.mr-1 ID is 
+      div #{carsid} 
+    - let actionid = "/resource/cars/" + carsid 
+    form(id='carsForm', action= actionid, method="PUT") 
+      div.form-group 
+          label.carsAttr(for='car_company') car company
+          input#car_company(type='text', name='car_company') 
+      div.form-group 
+          label.carsAttr(for='color') color
+          input#color(type='text', name='size' ) 
+      div.form-group 
+          label.carsAttr(for='price') price
+          input#price(type='number', name='price' ) 
+      input(type="submit") 
  
   script. 
     document.forms['carsForm'].addEventListener('submit', (event) => { 

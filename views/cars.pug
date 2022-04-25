@@ -2,10 +2,10 @@ extends layout
 
 block content
   h1= title
-  -let results=[{car_company:"Rolls Royce",color:"Salamanca Blue",price:450000},{car_company:"lamborgini",color:"white",price:500000},{car_company:"bugatti",color:"yellow",price:300000}]
+  -let items=results;
   div(class="container-fluid") 
     div(class="row m-1") 
-      each item in results  
+      each item in items 
         - let destination = `dispatch(\"/cars/update?id=${item._id}\")` 
         div(class="row-sm-2", class="m-1") Item #{item.car_company}(#{item.color}) is #{item.price} 
           button.btn( class="btn-primary ml-1", onclick= destination) Update 
